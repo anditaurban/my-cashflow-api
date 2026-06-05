@@ -1,0 +1,25 @@
+{
+  "name": "my-cahsflow-api",
+  "version": "1.0.0",
+  "description": "REST API Node.js + Express untuk aplikasi Cashflow Harian.",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "check": "node --check src/server.js"
+  },
+  "keywords": [
+    "cashflow",
+    "express",
+    "mysql",
+    "rest-api"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "mysql2": "^3.11.5"
+  }
+}
