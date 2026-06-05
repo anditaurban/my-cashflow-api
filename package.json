@@ -2,10 +2,16 @@
   "name": "my-cahsflow-api",
   "version": "1.0.0",
   "description": "REST API Node.js + Express untuk aplikasi Cashflow Harian.",
+  "private": true,
   "main": "src/server.js",
+  "engines": {
+    "node": ">=20.0.0",
+    "npm": ">=10.0.0"
+  },
   "scripts": {
     "start": "node src/server.js",
     "dev": "node --watch src/server.js",
+    "build": "npm run check",
     "check": "node --check src/server.js"
   },
   "keywords": [
