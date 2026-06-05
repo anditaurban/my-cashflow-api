@@ -47,6 +47,30 @@ Backend Node.js + Express untuk database MySQL pada `database/cashflow-harian-cr
    npm run dev
    ```
 
+## Deploy ke Railway
+
+Railway akan menjalankan aplikasi dengan `npm start`. Pastikan variable database ditambahkan pada service API, bukan hanya pada service MySQL.
+
+Jika service database bernama `MySQL`, tambahkan salah satu konfigurasi berikut pada tab Variables service API:
+
+```env
+MYSQL_URL=${{MySQL.MYSQL_URL}}
+```
+
+Atau variable terpisah:
+
+```env
+MYSQLHOST=${{MySQL.MYSQLHOST}}
+MYSQLPORT=${{MySQL.MYSQLPORT}}
+MYSQLUSER=${{MySQL.MYSQLUSER}}
+MYSQLPASSWORD=${{MySQL.MYSQLPASSWORD}}
+MYSQLDATABASE=${{MySQL.MYSQLDATABASE}}
+```
+
+Jika nama service database berbeda, sesuaikan `MySQL` dengan nama service di Railway.
+
+Log `connect ECONNREFUSED 127.0.0.1:3306` berarti aplikasi belum menerima env database Railway dan masih memakai fallback lokal.
+
 ## Endpoint Utama
 
 - `GET /api/health`

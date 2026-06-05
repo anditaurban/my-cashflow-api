@@ -9,6 +9,19 @@ function getFirstEnv(names) {
   return names.map((name) => process.env[name]).find(Boolean);
 }
 
+function hasDatabaseEnv() {
+  return Boolean(getFirstEnv([
+    'MYSQL_URL',
+    'MYSQL_PUBLIC_URL',
+    'MYSQL_PRIVATE_URL',
+    'DATABASE_URL',
+    'DATABASE_PUBLIC_URL',
+    'DATABASE_PRIVATE_URL',
+    'MYSQLHOST',
+    'DB_HOST'
+  ]));
+}
+
 function parseDatabaseUrl(rawUrl) {
   if (!rawUrl) {
     return null;
@@ -30,8 +43,10 @@ function getDatabaseConfig() {
   const urlConfig = parseDatabaseUrl(getFirstEnv([
     'MYSQL_URL',
     'MYSQL_PUBLIC_URL',
+    'MYSQL_PRIVATE_URL',
     'DATABASE_URL',
-    'DATABASE_PUBLIC_URL'
+    'DATABASE_PUBLIC_URL',
+    'DATABASE_PRIVATE_URL'
   ]));
 
   return {
@@ -63,5 +78,6 @@ async function assertDatabaseConnection() {
 module.exports = {
   assertDatabaseConnection,
   getDatabaseConfig,
+  hasDatabaseEnv,
   pool
 };
